@@ -19,6 +19,9 @@ export namespace Components {
     'name': string;
   }
   interface AppRoot {}
+  interface DialogHistory {
+    'DialogHistoryText': string[];
+  }
 }
 
 declare global {
@@ -41,10 +44,17 @@ declare global {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
   };
+
+  interface HTMLDialogHistoryElement extends Components.DialogHistory, HTMLStencilElement {}
+  var HTMLDialogHistoryElement: {
+    prototype: HTMLDialogHistoryElement;
+    new (): HTMLDialogHistoryElement;
+  };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'dialog-history': HTMLDialogHistoryElement;
   }
 }
 
@@ -58,11 +68,15 @@ declare namespace LocalJSX {
     'name'?: string;
   }
   interface AppRoot {}
+  interface DialogHistory {
+    'DialogHistoryText'?: string[];
+  }
 
   interface IntrinsicElements {
     'app-home': AppHome;
     'app-profile': AppProfile;
     'app-root': AppRoot;
+    'dialog-history': DialogHistory;
   }
 }
 
@@ -75,6 +89,7 @@ declare module "@stencil/core" {
       'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
       'app-profile': LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'dialog-history': LocalJSX.DialogHistory & JSXBase.HTMLAttributes<HTMLDialogHistoryElement>;
     }
   }
 }
