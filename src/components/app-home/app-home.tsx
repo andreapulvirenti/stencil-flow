@@ -1,6 +1,6 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import { ApiAiClient } from 'api-ai-javascript/es6/ApiAiClient';
-import { DialogHistory } from '../dialogHistory/dialogHistory';
+
 const CLIENT_TOKEN = "9ad59e3ab77d46809ddf0fc775de4e51";
 
 @Component({
@@ -16,6 +16,7 @@ export class AppHome {
 
   componentDidLoad(){
     this.AICLient = new ApiAiClient({accessToken: CLIENT_TOKEN});
+    this.answerHistory = [];
   }
 
   sendMessage() {
@@ -55,7 +56,7 @@ export class AppHome {
 
       <ion-content class="ion-padding">
 
-    <dialog-history DialogHistoryText={this.getAnswerHistory()}></dialog-history>
+     <dialog-history DialogHistoryText={this.getAnswerHistory()}></dialog-history>
  
       <ion-input placeholder="Ask me what time is it">
             </ion-input>
